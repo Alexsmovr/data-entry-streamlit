@@ -5,6 +5,11 @@ import io
 
 st.set_page_config(page_title="Data Entry Web", layout="wide")
 
+# Logo da Ternium
+st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Ternium_logo.svg/2560px-Ternium_logo.svg.png", width=200)
+
+ 
+
 # Define colunas padrão
 colunas = [
     "Data Mov", "Cod Cliente", "Cliente", 
