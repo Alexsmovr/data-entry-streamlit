@@ -1,10 +1,10 @@
-# Campo para nome personalizado do arquivo
-nome_arquivo = st.text_input("📁 Nome do arquivo para exportação (sem extensão)", value="dados_exportados")
-st.caption("💡 O navegador pode sobrescrever ou renomear esse arquivo automaticamente se ele já existir na sua pasta de downloads.")
-
 # Exportação se houver dados
 if not st.session_state.dados.empty:
     st.subheader("📤 Exportar Dados")
+
+    # Campo para nome personalizado do arquivo
+    nome_arquivo = st.text_input("📁 Nome do arquivo para exportação (sem extensão)", value="dados_exportados")
+    st.caption("💡 O navegador pode sobrescrever ou renomear esse arquivo automaticamente se ele já existir na sua pasta de downloads.")
 
     col1, col2, col3 = st.columns(3)
 
@@ -24,15 +24,3 @@ if not st.session_state.dados.empty:
             data=txt,
             file_name=f"{nome_arquivo}.txt",
             mime="text/plain"
-        )
-
-    with col3:
-        buffer = io.BytesIO()
-        with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
-            st.session_state.dados.to_excel(writer, sheet_name="Dados", index=False)
-        st.download_button(
-            "⬇️ Baixar Excel",
-            data=buffer,
-            file_name=f"{nome_arquivo}.xlsx",
-            mime="application/vnd.ms-excel"
-        )
