@@ -55,5 +55,4 @@ if st.session_state.dados:
         buffer = io.BytesIO()
         with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
             df.to_excel(writer, sheet_name="Dados", index=False)
-            writer.save()
-        st.download_button("⬇️ Baixar Excel", data=buffer, file_name="dados.xlsx", mime="application/vnd.ms-excel")
+            st.download_button("⬇️ Baixar Excel", data=buffer, file_name="dados.xlsx", mime="application/vnd.ms-excel")
