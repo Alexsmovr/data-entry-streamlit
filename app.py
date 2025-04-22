@@ -24,3 +24,15 @@ if not st.session_state.dados.empty:
             data=txt,
             file_name=f"{nome_arquivo}.txt",
             mime="text/plain"
+        )
+
+    with col3:
+        buffer = io.BytesIO()
+        with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
+            st.session_state.dados.to_excel(writer, sheet_name="Dados", index=False)
+        st.download_button(
+            "⬇️ Baixar Excel",
+            data=buffer,
+            file_name=f"{nome_arquivo}.xlsx",
+            mime="application/vnd.ms-excel"
+        )
