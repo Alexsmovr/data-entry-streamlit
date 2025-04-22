@@ -53,6 +53,7 @@ df_editado = st.data_editor(
 st.session_state.dados = df_editado
 
 # Campo para nome do arquivo
+st.caption("💡 O arquivo será salvo na sua pasta de downloads padrão do navegador.")
 nome_arquivo = st.text_input("📁 Nome do arquivo para exportação (sem extensão)", value="dados_exportados")
 
 # Exportação
