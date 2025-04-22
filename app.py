@@ -25,7 +25,7 @@ arquivo = st.sidebar.file_uploader("Escolha um arquivo .txt, .csv ou .xlsx", typ
 if arquivo:
     try:
         if arquivo.name.endswith(".txt"):
-            df_importado = pd.read_csv(arquivo, sep="|")
+            df_importado = pd.read_csv(arquivo, sep="|", encoding="latin1")
         elif arquivo.name.endswith(".csv"):
             df_importado = pd.read_csv(arquivo)
         elif arquivo.name.endswith(".xlsx"):
