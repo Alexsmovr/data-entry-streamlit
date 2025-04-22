@@ -67,7 +67,10 @@ if not st.session_state.dados.empty:
         st.download_button("⬇️ Baixar CSV", data=csv, file_name=f"{nome_arquivo}.csv", mime="text/csv")
 
     with col2:
-        txt = st.session_state.dados.to_csv(index=False, sep="|").encode("utf-8")
+        # txt = st.session_state.dados.to_csv(index=False, sep="|").encode("utf-8")
+        #  st.download_button("⬇️ Baixar TXT", data=txt, file_name=f"{nome_arquivo}.txt", mime="text/plain")
+
+        txt = st.session_state.dados.to_csv(index=False, sep="|").encode("latin1")
         st.download_button("⬇️ Baixar TXT", data=txt, file_name=f"{nome_arquivo}.txt", mime="text/plain")
 
     with col3:
